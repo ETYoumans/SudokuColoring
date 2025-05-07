@@ -211,43 +211,43 @@ def draw_sudoku_board(colors, k):
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
 
-    def main():
-        #Creating graph and edges
-        graph_start = time.time()
-        G, colors = new_sodoku(numColors, solved)
-        graph_end = time.time()
-        graph_elasped = graph_end - graph_start
-        print(f"Time for graph creation: {graph_elasped} seconds")
+def main():
+    #Creating graph and edges
+    graph_start = time.time()
+    G, colors = new_sodoku(numColors, solved)
+    graph_end = time.time()
+    graph_elasped = graph_end - graph_start
+    print(f"Time for graph creation: {graph_elasped} seconds")
 
-        #Drawing unsolved graph
-        draw_start = time.time()
-        draw_sudoku_graph(G,colors,numColors)
-        draw_sudoku_board(colors, numColors)
-        draw_end = time.time()
-        draw_elasped = draw_end - draw_start
-        print(f"Time for draw graph: {draw_elasped} seconds")
+    #Drawing unsolved graph
+    draw_start = time.time()
+    draw_sudoku_graph(G,colors,numColors)
+    draw_sudoku_board(colors, numColors)
+    draw_end = time.time()
+    draw_elasped = draw_end - draw_start
+    print(f"Time for draw graph: {draw_elasped} seconds")
 
-        #Solve using greedy then draw
-        greedy_G = G.copy()
-        greedy_colors = copy.deepcopy(colors)
-        greedy_start = time.time()
-        greedy_G, greedy_colors = greedy_sudoku_solver(greedy_G, greedy_colors, numColors)
-        greedy_end = time.time()
-        greedy_elasped = greedy_end - greedy_start
-        print(f"Time for greedy algorithm: {greedy_elasped} seconds")
-        draw_sudoku_graph(greedy_G,greedy_colors,numColors)
-        draw_sudoku_board(greedy_colors, numColors)
+    #Solve using greedy then draw
+    greedy_G = G.copy()
+    greedy_colors = copy.deepcopy(colors)
+    greedy_start = time.time()
+    greedy_G, greedy_colors = greedy_sudoku_solver(greedy_G, greedy_colors, numColors)
+    greedy_end = time.time()
+    greedy_elasped = greedy_end - greedy_start
+    print(f"Time for greedy algorithm: {greedy_elasped} seconds")
+    draw_sudoku_graph(greedy_G,greedy_colors,numColors)
+    draw_sudoku_board(greedy_colors, numColors)
 
-        #Solve using wfc then draw
-        wfc_G = G.copy()
-        wfc_colors = copy.deepcopy(colors)
-        wfc_start = time.time()
-        wfc_G, wfc_colors = wfc_sudoku_solver(wfc_G, numColors, wfc_colors)
-        wfc_end = time.time()
-        wfc_elasped = wfc_end - wfc_start
-        print(f"Time for WFC algorithm: {wfc_elasped} seconds")
-        draw_sudoku_graph(wfc_G,wfc_colors,numColors)
-        draw_sudoku_board(wfc_colors, numColors)
+    #Solve using wfc then draw
+    wfc_G = G.copy()
+    wfc_colors = copy.deepcopy(colors)
+    wfc_start = time.time()
+    wfc_G, wfc_colors = wfc_sudoku_solver(wfc_G, numColors, wfc_colors)
+    wfc_end = time.time()
+    wfc_elasped = wfc_end - wfc_start
+    print(f"Time for WFC algorithm: {wfc_elasped} seconds")
+    draw_sudoku_graph(wfc_G,wfc_colors,numColors)
+    draw_sudoku_board(wfc_colors, numColors)
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
